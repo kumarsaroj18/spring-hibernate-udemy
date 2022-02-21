@@ -7,7 +7,7 @@
 
     <context:property-placeholder location="sport.properties"/>
 
-    <bean id="myTrackCoach" class="kumar.saroj.TrackCoach"></bean>
+    <bean id="myTrackCoach" class="kumar.saroj.TrackCoach" init-method="doMyStartupStuff" destroy-method="changeClothes"></bean>
 
     <bean id="bangaloreTeam" class="kumar.saroj.Player">
         <property name="email" value="${foo.email}"/>

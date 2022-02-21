@@ -1,6 +1,7 @@
 package kumar.saroj;
 
 public class TrackCoach implements Coach{
+    private FortuneService fortuneService;
 
     @Override
     public void sayHello() {
@@ -11,4 +12,9 @@ public class TrackCoach implements Coach{
     public String getDailyWorkout() {
         return "Run a hard 5k";
     }
+
+    public void setFortuneService(FortuneService fortuneService) {
+        this.fortuneService = fortuneService;
+    }
+
 }

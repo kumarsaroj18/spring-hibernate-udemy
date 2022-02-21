@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="
-    http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="myCoach" class="kumar.saroj.TrackCoach"></bean>
+    <context:property-placeholder location="sport.properties"/>
+
+    <bean id="myTrackCoach" class="kumar.saroj.TrackCoach"></bean>
+
+    <bean id="bangaloreTeam" class="kumar.saroj.Player">
+        <property name="email" value="${foo.email}"/>
+        <property name="team" value="${foo.team}"/>
+    </bean>
+
+    <bean id="myBaseBallCoach" class="kumar.saroj.BaseballCoach">
+        <constructor-arg ref="myFortuneService"/>
+    </bean>
+
+    <bean id="myCricketCoach" class="kumar.saroj.CricketCoach">
+        <property name="fortuneService" ref="myFortuneService"/>
+    </bean>
+
 
     <bean id="myLoggerConfig" class="kumar.saroj.logging.MyLoggerConfig" init-method="initLogger">
         <property name="rootLoggerLevel" value="FINE" />
         <property name="printedLoggerLevel" value="FINE"/>
+    </bean>
+
+    <bean id="myFortuneService" class="kumar.saroj.HappyFortuneService">
     </bean>
 </beans>
